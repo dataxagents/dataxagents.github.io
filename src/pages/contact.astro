@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, isTBD } from '../lib/site';
+const c = site.contact;
+---
+<Base title="Contact" description="Contact the DBxAgents @ SIGMOD/PODS 2027 organizers.">
+  <h1>Contact</h1>
+  <div>
+    <p>Questions about the workshop or submissions? Email the organizers:</p>
+    <p><strong>Email:</strong> {isTBD(c.email) ? <span class="tbd">TBD</span> : <a href={`mailto:${c.email}`}>{c.email}</a>}</p>
+    <p>{c.note} <a href={site.meta.conference_url} rel="noopener">{site.meta.conference_url}</a></p>
+  </div>
+</Base>

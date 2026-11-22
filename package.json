@@ -1,0 +1,17 @@
+{
+  "name": "dbxagents-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "og": "rsvg-convert -w 1200 -h 630 public/og-image.svg -o public/og-image.png"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^5.18.2",
+    "yaml": "^2.9.1"
+  }
+}

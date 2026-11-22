@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+# private planning docs (not for the public repo)
+dbxagents_website_spec.md
+SIGMOD_27_workshop_proposal.pdf
+*.pdf
+
+# local preview renders
+screenshots/

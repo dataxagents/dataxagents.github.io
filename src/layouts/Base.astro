@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+import Dates from '../components/Dates.astro';
+import { site, md, nav, lastUpdated, isTBD } from '../lib/site';
+
+interface Props { title?: string; description?: string; }
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · DBxAgents @ SIGMOD/PODS 2027` : site.meta.title;
+const desc = description ?? site.meta.description;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og-image.png', Astro.site);
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const email = site.contact?.email;
+const editions: any[] = site.editions ?? [];
+const current = editions.find((e) => e.current) ?? editions[0];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DBxAgents" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DBxAgents: Workshop on Data Systems for AI Agents, SIGMOD/PODS 2027" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="page">
+      {current && (
+        <div class="topbar">
+          <details class="year-select">
+            <summary>Year ({current.year})</summary>
+            <ul>
+              {editions.map((e) => (
+                <li><a href={e.url} aria-current={e.current ? 'page' : undefined}>{e.year}</a></li>
+              ))}
+            </ul>
+          </details>
+        </div>
+      )}
+      <header class="banner">
+        <a class="banner-title" href="/">DB<span>x</span>Agents</a>
+        <p class="banner-sub">{site.meta.full_name}</p>
+      </header>
+
+      <p class="infoline">
+        <strong>DBxAgents</strong> Workshop at ACM SIGMOD/PODS 2027 ({site.meta.conference_dates})
+        <span class="dot" aria-hidden="true">•</span> Huntington Beach, CA, USA
+      </p>
+      {site.status?.show && <p class="status" role="note" set:html={md(site.status.text)} />}
+
+      <nav class="topnav" aria-label="Main">
+        <ul>
+          {nav.map((n) => (
+            <li><a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <main id="main" class="content">
+        <slot />
+      </main>
+
+      <aside class="info" aria-labelledby="dates">
+        <section>
+          <h2 id="dates">Important Dates</h2>
+          <Dates variant="compact" />
+        </section>
+        <section>
+          <h2>Venue</h2>
+          <ul>
+            <li><a href={site.meta.conference_url} rel="noopener">SIGMOD/PODS 2027</a></li>
+            <li>Huntington Beach, CA, USA</li>
+          </ul>
+        </section>
+      </aside>
+
+      <footer class="site-footer">
+        <p>DBxAgents @ SIGMOD/PODS 2027 (tentative)
+          <span class="dot" aria-hidden="true">•</span> <a href={site.meta.conference_url} rel="noopener">SIGMOD/PODS 2027</a>
+          <span class="dot" aria-hidden="true">•</span> {isTBD(email) ? <a href="/contact/">Contact</a> : <a href={`mailto:${email}`}>Contact</a>}
+          <span class="dot" aria-hidden="true">•</span> Last updated: <time>{lastUpdated}</time>
+        </p>
+      </footer>
+    </div>
+
+    <script is:inline>
+      // Close the year dropdown on outside click or Escape.
+      var ys = document.querySelector('.year-select');
+      if (ys) {
+        document.addEventListener('click', function (e) { if (!ys.contains(e.target)) ys.open = false; });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ys.open) { ys.open = false; ys.querySelector('summary').focus(); } });
+      }
+      // Strike through dates whose deadline (11:59 PM AoE = UTC-12) has passed.
+      document.querySelectorAll('[data-deadline]').forEach(function (el) {
+        var t = Date.parse(el.getAttribute('data-deadline') + 'T23:59:59-12:00');
+        if (!isNaN(t) && Date.now() > t) el.classList.add('past');
+      });
+    </script>
+  </body>
+</html>

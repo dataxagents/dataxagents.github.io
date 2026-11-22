@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, md, isTBD } from '../lib/site';
+const c = site.cfp;
+---
+<Base title="Call for Papers" description="Call for papers for DBxAgents @ SIGMOD/PODS 2027: topics, submission types, archival policy, formatting, and important dates.">
+  <h1>Call for Papers</h1>
+  <p set:html={md(c.intro)} />
+
+  <h2 id="topics">Topics</h2>
+  <ul class="thrust-list">
+    {c.thrusts.map((t: any) => (
+      <li id={t.id.toLowerCase()}><strong>{t.id}. {t.title}:</strong> <span set:html={md(t.topics)} /></li>
+    ))}
+  </ul>
+
+  <h2 id="submission">Submission types</h2>
+  <ul>{c.submission_types.map((x: string) => <li set:html={md(x)} />)}</ul>
+
+  <h2 id="archival">Archival policy</h2>
+  {c.archival.map((x: string) => <p set:html={md(x)} />)}
+
+  <h2 id="formatting">Formatting and review</h2>
+  <ul>
+    {c.formatting.map((x: string) => <li set:html={md(x)} />)}
+    <li>Submission site: {isTBD(c.submission_url)
+      ? <span class="tbd">TBD</span>
+      : <a href={c.submission_url} rel="noopener">{c.submission_url}</a>} (CMT or OpenReview).</li>
+  </ul>
+
+  <h2 id="presentation">Presentation</h2>
+  <ul>{c.presentation.map((x: string) => <li set:html={md(x)} />)}</ul>
+
+  <p>See <a href="#dates">Important Dates</a> below for all deadlines.</p>
+</Base>

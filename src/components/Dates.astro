@@ -1,0 +1,17 @@
+---
+import { site, md } from '../lib/site';
+interface Props { variant?: 'compact' | 'full'; }
+const { variant = 'full' } = Astro.props;
+// Build-time strike-through (the inline script in Base re-checks in the browser).
+const now = Date.now();
+const passed = (d?: string) => !!d && now > Date.parse(`${d}T23:59:59-12:00`);
+---
+<dl class={`dates ${variant}`}>
+  {site.dates.map((d: any) => (
+    <div class:list={['row', { bold: d.bold, past: passed(d.deadline) }]} data-deadline={d.deadline}>
+      <dt>{d.milestone}</dt>
+      <dd set:html={md(d.display)} />
+    </div>
+  ))}
+</dl>
+<p class="dates-note">{site.dates_note}</p>

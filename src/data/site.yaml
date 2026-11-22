@@ -1,0 +1,264 @@
+# =====================================================================
+# DBxAgents website content
+# ---------------------------------------------------------------------
+# All editable site content lives in this one file. Edit, commit, and
+# push to `main`; GitHub Actions rebuilds and deploys the site.
+#
+# Conventions
+#   - Any value written as TBD (unquoted or "TBD") renders as a subtle
+#     "TBD" badge on the site.
+#   - Simple inline markup is allowed in text fields: **bold**, *italic*,
+#     and [link text](https://example.com).
+# =====================================================================
+
+meta:
+  name: DBxAgents
+  full_name: "Workshop on Data Systems for AI Agents"
+  title: "DBxAgents @ SIGMOD/PODS 2027: Workshop on Data Systems for AI Agents"
+  description: "DBxAgents brings together database, ML, NLP, and HCI researchers to build data systems that serve AI agents as first-class clients. Co-located with ACM SIGMOD/PODS 2027."
+  conference_dates: "June 13–18, 2027"
+  venue_line: "Co-located with ACM SIGMOD/PODS 2027 · Huntington Beach, CA, USA · June 2027 (day TBD, after the main conference)"
+  conference_name: "SIGMOD/PODS 2027"
+  conference_url: "https://2027.sigmod.org/"
+
+# Year selector (top-left dropdown, NeurIPS style). List every edition,
+# newest first. `current: true` marks the edition this site shows.
+# When a new edition starts, archive the old site (e.g. under /2027/)
+# and point its `url` there.
+editions:
+  - year: 2027
+    url: /
+    current: true
+
+# Status banner shown at the top of every page. Set `show: false` (or
+# delete the block) once the workshop is officially accepted.
+status:
+  show: true
+  text: "**Tentative.** DBxAgents is a *proposed* workshop for SIGMOD/PODS 2027 and has not yet been confirmed. Dates and details may change."
+
+# ---------------------------------------------------------------------
+# Home
+# ---------------------------------------------------------------------
+overview:
+  - "AI agents (LLM-driven programs that plan, call tools, and act over many steps) are quickly becoming both demanding *users* of data systems and a new way to *build* data workflows. When agents issue queries, explore data lakes, and write to tables, their execution must be **efficient**, their actions **safe**, their runs **auditable**, and their data **trustworthy**. These are classic data management problems in a new setting."
+  - "**DBxAgents** brings together the database, ML, NLP, and HCI communities to study data systems that treat agents as first-class clients that read *and* write data, and what those systems must guarantee to them."
+
+audience: "Researchers and practitioners in data management who build or study agent-facing systems; agent and NLP researchers whose agents act on data; and industry engineers deploying agents over enterprise data. Students are especially welcome. Diverse and unconventional ideas are welcome as posters."
+
+open_questions:
+  - label: Interfaces
+    text: "If agents write most code and queries, what interface should a data system expose? Will SQL remain dominant?"
+  - label: Internals
+    text: "Can agents replace internals such as query optimization, or do these become more important because reasoning over text cannot infer costs from data?"
+  - label: Coordination
+    text: "Should agents coordinate among themselves, or should coordination be pushed down into the data system?"
+  - label: Trust
+    text: "What should least privilege, accountability, and consent mean when an agent acts on a person's behalf?"
+  - label: State
+    text: "Should agents' memory and context be managed by data systems, with the same guarantees as other data?"
+  - label: Correctness
+    text: "When an agent both asks and checks a question, how should a system convey uncertainty?"
+
+# News, newest first. `date` is free text (e.g. "Jan 15, 2027" or TBD).
+news:
+  # - date: TBD
+  #   text: "DBxAgents accepted as a SIGMOD/PODS 2027 workshop."
+  - date: TBD
+    text: "Call for papers released."
+
+# Important dates. `deadline` (YYYY-MM-DD) is optional; when set, the
+# entry is struck through automatically once 11:59 PM AoE on that day
+# has passed. `display` is what is shown.
+dates_note: "All deadlines are 11:59 PM AoE (Anywhere on Earth)."
+dates:
+  - milestone: Call for papers
+    display: mid-January 2027
+    deadline: 2027-01-15
+  - milestone: Paper submission
+    display: March 19, 2027
+    deadline: 2027-03-19
+    bold: true
+  - milestone: Notification
+    display: April 9, 2027
+    deadline: 2027-04-09
+    bold: true
+  - milestone: Camera-ready
+    display: April 23, 2027
+    deadline: 2027-04-23
+    bold: true
+  - milestone: Program online
+    display: April 30, 2027
+    deadline: 2027-04-30
+  - milestone: Workshop
+    display: "June 2027 (exact day TBD; after the main conference)"
+
+# ---------------------------------------------------------------------
+# Call for Papers
+# ---------------------------------------------------------------------
+cfp:
+  intro: "We invite work on data systems that serve AI agents as first-class clients (Thrusts 1–3, our emphasis) and on agents that do data work (Thrust 4)."
+  # One short line per thrust. Each thrust becomes a program session.
+  thrusts:
+    - id: T1
+      title: Agent-ready systems
+      topics: "storage, query processing, and optimization for agent workloads; sandboxes; agent memory; tool and MCP interfaces"
+    - id: T2
+      title: Safe agent actions
+      topics: "transactions, recovery, and undo; multi-agent concurrency; access control and privacy; security; verification"
+    - id: T3
+      title: Agent oversight
+      topics: "provenance and lineage of agent runs; observability and debugging; trace-based evaluation; human–agent interaction"
+    - id: T4
+      title: Data agents
+      topics: "agents for data discovery, cleaning, integration, and analysis; benchmarks; data quality"
+
+  submission_types:
+    - "**Regular papers:** up to 8 pages."
+    - "**Short papers:** up to 4 pages (vision, work-in-progress, negative results)."
+    - "**Experience reports** on deploying agents over production data systems."
+    - "**Already published work:** papers already published or accepted at another venue may be submitted as short papers (up to 4 pages) summarizing the work. These are non-archival."
+    - "Page limits exclude references (TBD: confirm)."
+
+  archival:
+    - "Regular and short papers are published in the ACM Digital Library as part of the SIGMOD workshop proceedings."
+    - "**Exception:** short papers presenting already published or accepted work are **non-archival**. We especially invite authors of relevant SIGMOD/PODS 2027 papers to present their work this way."
+
+  formatting:
+    - "Use the ACM [`sigconf` template](https://www.acm.org/publications/proceedings-template)."
+    - "**Double-anonymous** review. Each paper gets three reviews: two from database researchers and one from ML/NLP researchers."
+    - "Conflicts follow the SIGMOD research-track COI guidelines. Papers under review at SIGMOD 2027 may not be submitted concurrently."
+    - "Workshop chairs do not submit papers. A submission conflicted with a chair is handled by another chair (or by a steering-committee member if all chairs are conflicted)."
+
+  # Set to a URL when the submission site (CMT / OpenReview) is ready.
+  submission_url: TBD
+
+  presentation:
+    - "All accepted papers are presented as posters."
+    - "Among accepted papers, the workshop chairs and the program committee select papers for oral presentation (about 15 minutes each, grouped by thrust)."
+    - "A best-paper award will be given (sponsor TBD)."
+
+# ---------------------------------------------------------------------
+# Program
+# kind: opening | keynote | talks | break | panel | closing
+# ---------------------------------------------------------------------
+program_note: "Tentative; final program online by April 30, 2027."
+program_intro: "A full-day program with two industry keynotes, four paper sessions (one per thrust, about 15 minutes per talk), two poster sessions, and a closing panel. If fewer papers are accepted for oral presentation, the workshop runs as a half day: one keynote, one poster session, the panel, and a 30-minute slot per thrust."
+program:
+  - { time: "9:00–9:10", min: 10, kind: opening, session: "Opening" }
+  - { time: "9:10–9:40", min: 30, kind: keynote, session: "Keynote 1", detail: "data systems; industry" }
+  - { time: "9:40–10:30", min: 50, kind: talks, session: "T1 Agent-ready systems", detail: "3 papers" }
+  - { time: "10:30–11:00", min: 30, kind: break, session: "Posters 1 + break" }
+  - { time: "11:00–11:50", min: 50, kind: talks, session: "T2 Safe agent actions", detail: "3 papers" }
+  - { time: "11:50–13:20", min: 90, kind: break, session: "Lunch" }
+  - { time: "13:20–13:50", min: 30, kind: keynote, session: "Keynote 2", detail: "NLP and agents; industry" }
+  - { time: "13:50–14:40", min: 50, kind: talks, session: "T3 Agent oversight", detail: "3 papers" }
+  - { time: "14:40–15:10", min: 30, kind: break, session: "Posters 2 + break" }
+  - { time: "15:10–16:00", min: 50, kind: talks, session: "T4 Data agents", detail: "3 papers" }
+  - { time: "16:00–16:45", min: 45, kind: panel, session: "Panel", detail: "“Agents are the new clients: what must data systems guarantee?”" }
+  - { time: "16:45–17:00", min: 15, kind: closing, session: "Awards and closing" }
+
+# ---------------------------------------------------------------------
+# Speakers
+# Fields: role, name, affiliation, photo (path under /public), homepage,
+#         talk_title, abstract, bio. Use TBD for unknowns.
+# ---------------------------------------------------------------------
+keynotes:
+  - role: "Keynote 1 · Industry, data systems"
+    name: TBD
+    affiliation: TBD
+    talk_title: TBD
+  - role: "Keynote 2 · Industry, NLP and agents"
+    name: TBD
+    affiliation: TBD
+    talk_title: TBD
+
+panel:
+  title: "Agents are the new clients: what must data systems guarantee?"
+  description: "A mix of faculty and industry panelists spanning databases and NLP. The panel discussion will be published as an archival paper in the proceedings."
+  moderator: TBD
+  panelists: []
+  # - { name: "Jane Doe", affiliation: "Example University", photo: "/img/speakers/jane-doe.jpg", homepage: "https://..." }
+
+# ---------------------------------------------------------------------
+# Organizers  (photo: path under /public, or omit for an initials avatar;
+#              homepage and linkedin are optional links)
+# ---------------------------------------------------------------------
+organizers:
+  chairs:
+    - name: Yongjoo Park
+      photo: /img/organizers/yongjoo-park.jpg
+      title: Assistant Professor
+      affiliation: University of Illinois Urbana-Champaign
+      homepage: https://yongjoo.web.illinois.edu
+      role: Leads T1
+    - name: Eugene Wu
+      photo: /img/organizers/eugene-wu.jpg
+      title: Associate Professor
+      affiliation: Columbia University
+      homepage: https://www.cs.columbia.edu/~ewu/
+      role: Leads T3
+    - name: Steven Euijong Whang
+      photo: /img/organizers/steven-whang.jpg
+      title: Tenured Associate Professor
+      affiliation: KAIST
+      homepage: https://sites.google.com/view/whanglab
+      linkedin: https://www.linkedin.com/in/steven-euijong-whang-1612b5a/
+      role: Leads T4
+    - name: Daniel Kang
+      photo: /img/organizers/daniel-kang.jpg
+      title: Assistant Professor
+      affiliation: University of Illinois Urbana-Champaign
+      homepage: https://ddkang.github.io
+      linkedin: https://www.linkedin.com/in/daniel-kang-1223b343/
+      role: Leads T2
+  steering:
+    - name: Mike Cafarella
+      photo: /img/organizers/mike-cafarella.jpg
+      title: Principal Research Scientist
+      affiliation: MIT CSAIL
+      homepage: https://people.csail.mit.edu/michjc/
+      linkedin: https://www.linkedin.com/in/mikecafarella/
+      role: Co-leads T1
+    - name: Anupam Datta
+      photo: /img/organizers/anupam-datta.jpg
+      title: Principal Research Scientist
+      affiliation: Snowflake
+      homepage: https://www.ece.cmu.edu/directory/bios/datta-anupam.html
+      linkedin: https://www.linkedin.com/in/anupamdatta/
+      role: Co-leads T2
+    - name: Zhou Yu
+      photo: /img/organizers/zhou-yu.jpg
+      title: Associate Professor
+      affiliation: Columbia University
+      homepage: https://www.cs.columbia.edu/~zhouyu/
+      linkedin: https://www.linkedin.com/in/zhou-jo-yu-95327378/
+      role: Co-leads T3
+    - name: Heng Ji
+      photo: /img/organizers/heng-ji.jpg
+      title: Professor
+      affiliation: University of Illinois Urbana-Champaign
+      homepage: https://blender.cs.illinois.edu/hengji.html
+      linkedin: https://www.linkedin.com/in/heng-ji-213032158/
+      role: Co-leads T4
+  # About 60 members. Leave empty to show "To be announced."
+  program_committee: []
+  # - { name: "Jane Doe", affiliation: "Example University" }
+
+# ---------------------------------------------------------------------
+# Accepted papers (empty until notification)
+# thrust: T1 | T2 | T3 | T4 ; type: oral | poster | non-archival
+# ---------------------------------------------------------------------
+papers_placeholder: "Accepted papers will be listed after notification (April 9, 2027)."
+papers: []
+# - title: "Example paper title"
+#   authors: "Ada Lovelace, Alan Turing"
+#   thrust: T1
+#   type: oral
+#   pdf: "https://..."
+
+# ---------------------------------------------------------------------
+# Contact
+# ---------------------------------------------------------------------
+contact:
+  email: TBD
+  note: "For registration, travel, and venue information, see the SIGMOD/PODS 2027 website."

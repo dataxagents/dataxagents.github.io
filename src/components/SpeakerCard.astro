@@ -1,0 +1,19 @@
+---
+import Avatar from './Avatar.astro';
+import { md, isTBD } from '../lib/site';
+interface Props { speaker: any; }
+const { speaker: s } = Astro.props;
+---
+<article class="speaker">
+  <Avatar name={s.name} photo={s.photo} />
+  <div>
+    {s.role && <p class="role">{s.role}</p>}
+    <h3>{!isTBD(s.homepage) && !isTBD(s.name)
+      ? <a href={s.homepage} rel="noopener">{s.name}</a>
+      : <Fragment set:html={md(s.name)} />}
+      <span class="muted" style="font-weight:400">, <Fragment set:html={md(s.affiliation)} /></span></h3>
+    <p><span class="label">Talk:</span> <Fragment set:html={md(s.talk_title)} /></p>
+    {s.abstract && <p><span class="label">Abstract:</span> <Fragment set:html={md(s.abstract)} /></p>}
+    {s.bio && <p><span class="label">Bio:</span> <Fragment set:html={md(s.bio)} /></p>}
+  </div>
+</article>

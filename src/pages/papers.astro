@@ -4,7 +4,7 @@ import { site, md, isTBD } from '../lib/site';
 const typeLabel: Record<string, string> = { oral: 'Oral', poster: 'Poster', 'non-archival': 'Non-archival' };
 const thrustTitle: Record<string, string> = Object.fromEntries(site.cfp.thrusts.map((t: any) => [t.id, t.title]));
 ---
-<Base title="Accepted Papers" description="Accepted papers at DBxAgents @ SIGMOD/PODS 2027.">
+<Base title="Accepted Papers" description="Accepted papers at DataxAgents @ SIGMOD/PODS 2027.">
   <h1>Accepted Papers</h1>
   {site.papers?.length ? (
     <ul class="plain papers">

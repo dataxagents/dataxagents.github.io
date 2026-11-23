@@ -5,7 +5,7 @@ import { site, md, nav, lastUpdated, isTBD } from '../lib/site';
 
 interface Props { title?: string; description?: string; }
 const { title, description } = Astro.props;
-const pageTitle = title ? `${title} · DBxAgents @ SIGMOD/PODS 2027` : site.meta.title;
+const pageTitle = title ? `${title} · DataxAgents @ SIGMOD/PODS 2027` : site.meta.title;
 const desc = description ?? site.meta.description;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og-image.png', Astro.site);
@@ -27,14 +27,14 @@ const current = editions.find((e) => e.current) ?? editions[0];
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="DBxAgents" />
+    <meta property="og:site_name" content="DataxAgents" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="DBxAgents: Workshop on Data Systems for AI Agents, SIGMOD/PODS 2027" />
+    <meta property="og:image:alt" content="DataxAgents: Workshop on Data Systems for AI Agents, SIGMOD/PODS 2027" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={desc} />
@@ -57,12 +57,12 @@ const current = editions.find((e) => e.current) ?? editions[0];
         </div>
       )}
       <header class="banner">
-        <a class="banner-title" href="/">DB<span>x</span>Agents</a>
+        <a class="banner-title" href="/">Data<span>x</span>Agents</a>
         <p class="banner-sub">{site.meta.full_name}</p>
       </header>
 
       <p class="infoline">
-        <strong>DBxAgents</strong> Workshop at ACM SIGMOD/PODS 2027 ({site.meta.conference_dates})
+        <strong>DataxAgents</strong> Workshop at ACM SIGMOD/PODS 2027 ({site.meta.conference_dates})
         <span class="dot" aria-hidden="true">•</span> Huntington Beach, CA, USA
       </p>
       {site.status?.show && <p class="status" role="note" set:html={md(site.status.text)} />}
@@ -94,7 +94,7 @@ const current = editions.find((e) => e.current) ?? editions[0];
       </aside>
 
       <footer class="site-footer">
-        <p>DBxAgents @ SIGMOD/PODS 2027 (tentative)
+        <p>DataxAgents @ SIGMOD/PODS 2027 (tentative)
           <span class="dot" aria-hidden="true">•</span> <a href={site.meta.conference_url} rel="noopener">SIGMOD/PODS 2027</a>
           <span class="dot" aria-hidden="true">•</span> {isTBD(email) ? <a href="/contact/">Contact</a> : <a href={`mailto:${email}`}>Contact</a>}
           <span class="dot" aria-hidden="true">•</span> Last updated: <time>{lastUpdated}</time>

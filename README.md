@@ -1,6 +1,6 @@
-# DBxAgents website
+# DataxAgents website
 
-Source for **https://dbxagents.github.io**, the site of *DBxAgents: Workshop on Data Systems for AI Agents* (proposed, co-located with ACM SIGMOD/PODS 2027).
+Source for **https://dataxagents.github.io**, the site of *DataxAgents: Workshop on Data Systems for AI Agents* (proposed, co-located with ACM SIGMOD/PODS 2027).
 
 Built with [Astro](https://astro.build) as a fully static site: one plain stylesheet in the style of the SIGMOD/PODS site, a few lines of inline JS, no trackers.
 

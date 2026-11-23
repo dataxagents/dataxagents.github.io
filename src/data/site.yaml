@@ -1,5 +1,5 @@
 # =====================================================================
-# DBxAgents website content
+# DataxAgents website content
 # ---------------------------------------------------------------------
 # All editable site content lives in this one file. Edit, commit, and
 # push to `main`; GitHub Actions rebuilds and deploys the site.
@@ -12,10 +12,10 @@
 # =====================================================================
 
 meta:
-  name: DBxAgents
+  name: DataxAgents
   full_name: "Workshop on Data Systems for AI Agents"
-  title: "DBxAgents @ SIGMOD/PODS 2027: Workshop on Data Systems for AI Agents"
-  description: "DBxAgents brings together database, ML, NLP, and HCI researchers to build data systems that serve AI agents as first-class clients. Co-located with ACM SIGMOD/PODS 2027."
+  title: "DataxAgents @ SIGMOD/PODS 2027: Workshop on Data Systems for AI Agents"
+  description: "DataxAgents brings together database, ML, NLP, and HCI researchers to build data systems that serve AI agents as first-class clients. Co-located with ACM SIGMOD/PODS 2027."
   conference_dates: "June 13–18, 2027"
   venue_line: "Co-located with ACM SIGMOD/PODS 2027 · Huntington Beach, CA, USA · June 2027 (day TBD, after the main conference)"
   conference_name: "SIGMOD/PODS 2027"
@@ -34,14 +34,14 @@ editions:
 # delete the block) once the workshop is officially accepted.
 status:
   show: true
-  text: "**Tentative.** DBxAgents is a *proposed* workshop for SIGMOD/PODS 2027 and has not yet been confirmed. Dates and details may change."
+  text: "**Tentative.** DataxAgents is a *proposed* workshop for SIGMOD/PODS 2027 and has not yet been confirmed. Dates and details may change."
 
 # ---------------------------------------------------------------------
 # Home
 # ---------------------------------------------------------------------
 overview:
   - "AI agents (LLM-driven programs that plan, call tools, and act over many steps) are quickly becoming both demanding *users* of data systems and a new way to *build* data workflows. When agents issue queries, explore data lakes, and write to tables, their execution must be **efficient**, their actions **safe**, their runs **auditable**, and their data **trustworthy**. These are classic data management problems in a new setting."
-  - "**DBxAgents** brings together the database, ML, NLP, and HCI communities to study data systems that treat agents as first-class clients that read *and* write data, and what those systems must guarantee to them."
+  - "**DataxAgents** brings together the database, ML, NLP, and HCI communities to study data systems that treat agents as first-class clients that read *and* write data, and what those systems must guarantee to them."
 
 audience: "Researchers and practitioners in data management who build or study agent-facing systems; agent and NLP researchers whose agents act on data; and industry engineers deploying agents over enterprise data. Students are especially welcome. Diverse and unconventional ideas are welcome as posters."
 
@@ -62,7 +62,7 @@ open_questions:
 # News, newest first. `date` is free text (e.g. "Jan 15, 2027" or TBD).
 news:
   # - date: TBD
-  #   text: "DBxAgents accepted as a SIGMOD/PODS 2027 workshop."
+  #   text: "DataxAgents accepted as a SIGMOD/PODS 2027 workshop."
   - date: TBD
     text: "Call for papers released."
 

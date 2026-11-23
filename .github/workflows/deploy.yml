@@ -1,9 +1,8 @@
 name: Deploy to GitHub Pages
 
-# Automatic deploys are disabled for now. To re-enable, restore:
-#   push:
-#     branches: [main]
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
